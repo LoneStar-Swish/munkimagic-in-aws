@@ -32,7 +32,7 @@ requirements:
 		exit 1; \
 	fi
 	@if [[ $(MAKECMDGOALS) == "destroy" ]];then \
-		if ! /usr/bin/python2.7 -c "import boto3" 2>/dev/null;then \
+		if ! /usr/local/bin/python3 -c "import boto3" 2>/dev/null;then \
 			echo -e "\n\033[31m!\033[0m Please install boto3\n"; \
 			exit 1; \
 		fi; \
@@ -224,7 +224,7 @@ destroy: requirements
 		echo -en "  $${bucket}"; \
 		if [[ $${bucket} == $${munki_s3_bucket}-artifacts || $${bucket} == $${codebuild_scripts_bucket} ]];then \
 			export aws_profile bucket; \
-			empty_bucket=$$(/usr/bin/python2.7 -c 'import boto3; \
+			empty_bucket=$$(/usr/local/bin/python3 -c 'import boto3; \
 	import os; \
 	bucket = os.getenv("bucket"); \
 	profile = os.getenv("aws_profile"); \
