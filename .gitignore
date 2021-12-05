@@ -2,3 +2,4 @@
 munki_admins.yaml
 munki.env
 munki.mobileconfig
+*.venv
